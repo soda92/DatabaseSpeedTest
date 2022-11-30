@@ -1,2 +1,2 @@
 TEMPLATE =  subdirs
-SUBDIRS += test_tools
+SUBDIRS += test_insert
