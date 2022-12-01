@@ -7,7 +7,7 @@ CONFIG -= app_bundle
 INCLUDEPATH += $$PWD/../ $$PWD/../tools
 
 SOURCES += \
-        main.cpp
+        init_data.cpp
 
 init_data.depends += tools
 LIBS += -L../tools/lib -ltools

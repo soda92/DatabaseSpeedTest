@@ -5,7 +5,6 @@
 #include <QtCore>
 #include <QtSql>
 
-
 int main(int argc, char* argv[])
 {
   QCoreApplication app(argc, argv);

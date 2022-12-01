@@ -7,7 +7,7 @@ CONFIG -= app_bundle
 INCLUDEPATH += $$PWD/../ $$PWD/../tools
 
 SOURCES += \
-        test_insert.cpp
+        test_delete.cpp
 
 test_insert.depends += tools
 LIBS += -L../tools/lib -ltools

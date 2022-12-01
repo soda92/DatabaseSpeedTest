@@ -15,30 +15,42 @@ void prepare_data()
     num = query.value(0).toInt();
   }
   qDebug() << num;
-
-  QElapsedTimer timer;
-  timer.start();
-  if (num < data_count) {
-    auto cnt = data_count - num;
-    for (auto i = num; i < data_count; i++) {
-      if (!query.exec("insert into test_table(val1, val2, val3) values (1, 'test',"
-                      "2.0)")) {
-        qDebug() << query.lastError().text();
+  if (num != data_count) {
+    if (num < data_count) {
+      for (auto i = num; i < data_count; i++) {
+        if (!query.exec("insert into test_table(val1, val2, val3) values (1, 'test',"
+                        "2.0)")) {
+          qDebug() << query.lastError().text();
+        }
       }
     }
-    qDebug() << "prepare data average insert time:" << timer.elapsed() / static_cast<float>(cnt)
-             << "ms";
-  }
-  else {
-    auto cnt = num - data_count;
-    for (auto i = data_count; i < num; i++) {
-      if (!query.exec("delete from test_table where idx= ("
-                      "select max(idx) from test_table)")) {
+    else {
+      auto cnt = num - data_count;
+      if (!query.prepare("select idx from test_table order by idx desc limit ?")) {
         qDebug() << query.lastError().text();
+        std::terminate();
+      }
+      query.addBindValue(cnt);
+      if (!query.exec()) {
+        qDebug() << query.lastError().text();
+        std::terminate();
+      }
+      QVector<int> indexes;
+      while (query.next()) {
+        indexes.append(query.value(0).toInt());
+      }
+      for (auto i = 0; i < indexes.length(); i++) {
+        if (!query.prepare("delete from test_table where idx=?")) {
+          qDebug() << query.lastError().text();
+          std::terminate();
+        }
+        query.addBindValue(indexes.at(i));
+        if (!query.exec()) {
+          qDebug() << query.lastError().text();
+          std::terminate();
+        }
       }
     }
-    qDebug() << "prepare data average delete time:" << timer.elapsed() / static_cast<float>(cnt)
-             << "ms";
   }
   query.exec("select count(*) from test_table");
 

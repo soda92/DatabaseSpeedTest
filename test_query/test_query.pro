@@ -7,7 +7,7 @@ CONFIG -= app_bundle
 INCLUDEPATH += $$PWD/../ $$PWD/../tools
 
 SOURCES += \
-        main.cpp
+        test_query.cpp
 
 test_query.depends += tools
 LIBS += -L../tools/lib -ltools
