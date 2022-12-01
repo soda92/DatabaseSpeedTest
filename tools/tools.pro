@@ -2,14 +2,14 @@ TEMPLATE = lib
 QT += core sql
 TARGET = ../lib/tools
 
-HEADERS += $$PWD/prepare_data.h \
-    $$PWD/db_connection.h \
-    $$PWD/random_data_generator.h \
-    $$PWD/../config.h \
-    $$PWD/tools.h
+HEADERS += prepare_data.h \
+    db_connection.h \
+    random_data_generator.h \
+    ../config.h \
+    tools.h
 
-SOURCES += $$PWD/prepare_data.cpp \
-    $$PWD/db_connection.cpp \
-    $$PWD/random_data_generator.cpp \
+SOURCES += prepare_data.cpp \
+    db_connection.cpp \
+    random_data_generator.cpp \
 
-INCLUDEPATH += $$PWD/../
+INCLUDEPATH += ../

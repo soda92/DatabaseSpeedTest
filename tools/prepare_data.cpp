@@ -46,4 +46,6 @@ void prepare_data()
     num = query.value(0).toInt();
   }
   qDebug() << num;
+
+  return;
 }
