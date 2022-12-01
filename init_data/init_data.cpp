@@ -2,8 +2,8 @@
 #include <QtCore>
 #include <QtSql>
 
-#include "tools.h"
 #include "config.h"
+#include "tools.h"
 
 int main(int argc, char *argv[])
 {
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     }
     if (i % 1000 == 0) {
       qDebug() << i / (num_count / 100) << "%"
-               << " time:" << timer.elapsed() << "ms";
+               << " time: " << timer.elapsed() << "ms";
       timer.restart();
     }
   }
