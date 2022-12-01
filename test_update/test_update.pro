@@ -9,5 +9,5 @@ INCLUDEPATH += $$PWD/../ $$PWD/../tools
 SOURCES += \
         main.cpp
 
-test_insert.depends += tools
+test_update.depends += tools
 LIBS += -L../tools/lib -ltools
