@@ -1,2 +1,7 @@
 *.user
 build-*
+Makefile*
+debug
+release
+.qtc_clangd
+.qmake.stash
